@@ -19,17 +19,12 @@ module.exports = (sequelize, DataTypes) => {
     //   primaryKey: true
     // },
     email: DataTypes.STRING,
-    password: DataTypes.STRING,
+    passWord: DataTypes.STRING,
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     address: DataTypes.STRING,
-    phoneNumber: DataTypes.STRING,
     gender: DataTypes.BOOLEAN,
-    image: DataTypes.STRING,
-    roleId: DataTypes.STRING,
-    positionId: DataTypes.STRING,
-
-
+    roleid: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'User',
