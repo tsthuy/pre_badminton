@@ -49,9 +49,9 @@ let getEditCRUD = async (req, res) => {
     }
 }
 let putCRUD = async (req, res) => {
-    let data = req.body
-    await CRUDService.updateUserData(data);
-    res.redirect("get-crud");
+    // let data = req.body;
+    // console.log(data)
+    return res.send('edited')
 }
 module.exports = {
     getHomePage: getHomePage,

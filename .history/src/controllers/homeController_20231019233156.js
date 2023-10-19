@@ -48,11 +48,6 @@ let getEditCRUD = async (req, res) => {
         return res.send('user not found');
     }
 }
-let putCRUD = async (req, res) => {
-    let data = req.body
-    await CRUDService.updateUserData(data);
-    res.redirect("get-crud");
-}
 module.exports = {
     getHomePage: getHomePage,
     getAboutPage: getAboutPage,
@@ -60,5 +55,4 @@ module.exports = {
     postCrud: postCrud,
     displayCrud: displayCrud,
     getEditCRUD: getEditCRUD,
-    putCRUD: putCRUD,
 }

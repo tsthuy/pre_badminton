@@ -50,8 +50,11 @@ let getEditCRUD = async (req, res) => {
 }
 let putCRUD = async (req, res) => {
     let data = req.body
-    await CRUDService.updateUserData(data);
-    res.redirect("get-crud");
+    let allUsers = await CRUDService.updateUserData(data);
+    return res.render('displayCRUD.ejs',
+        {
+            dataTable: allUsers
+        })
 }
 module.exports = {
     getHomePage: getHomePage,

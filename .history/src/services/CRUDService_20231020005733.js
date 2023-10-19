@@ -79,14 +79,14 @@ let updateUserData = (data) => {
             })
 
             if (user) {
-                user.firstName = data.firstName;
-                user.lastName = data.lastName;
-                user.address = data.address;
+                // user.firstName = data.firstName;
+                // user.lastName = data.lastName;
+                // user.address = data.address;
 
+                // await user.save();
+                let allUsers = db.User.update(user, { where: { id: user.id } })
 
-                // let allUsers = db.User.update(user, { where: { id: user.id } })
-                await user.save();
-                let allUsers = await db.User.findAll()
+                // let allUsers = await db.User.findAll()
                 resolve(allUsers);
             }
             else {

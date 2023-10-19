@@ -74,18 +74,19 @@ let getUserInforbyId = (userId) => {
 let updateUserData = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
-            let user = await db.User.findOne({
+            // let user = await db.User.findOne({
+            //     where: { id: data.id }
+            // })
+            let user = db.User.update(user, {
                 where: { id: data.id }
             })
-
             if (user) {
-                user.firstName = data.firstName;
-                user.lastName = data.lastName;
-                user.address = data.address;
+                // user.firstName = data.firstName;
+                // user.lastName = data.lastName;
+                // user.address = data.address;
 
+                // await user.save();
 
-                // let allUsers = db.User.update(user, { where: { id: user.id } })
-                await user.save();
                 let allUsers = await db.User.findAll()
                 resolve(allUsers);
             }

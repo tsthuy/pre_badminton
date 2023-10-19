@@ -63,7 +63,7 @@ let getUserInforbyId = (userId) => {
                 resolve(user)
             }
             else {
-                resolve({})
+                resolve([])
             }
         } catch (e) {
             reject(e);
@@ -71,35 +71,8 @@ let getUserInforbyId = (userId) => {
     }
     )
 }
-let updateUserData = (data) => {
-    return new Promise(async (resolve, reject) => {
-        try {
-            let user = await db.User.findOne({
-                where: { id: data.id }
-            })
-
-            if (user) {
-                user.firstName = data.firstName;
-                user.lastName = data.lastName;
-                user.address = data.address;
-
-
-                // let allUsers = db.User.update(user, { where: { id: user.id } })
-                await user.save();
-                let allUsers = await db.User.findAll()
-                resolve(allUsers);
-            }
-            else {
-                resolve();
-            }
-        } catch (e) {
-            console.log(e);
-        }
-    })
-}
 module.exports = {
     createNewUser: createNewUser,
     getAllUser: getAllUser,
     getUserInforbyId: getUserInforbyId,
-    updateUserData: updateUserData,
 }
