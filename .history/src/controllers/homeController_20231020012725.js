@@ -60,8 +60,7 @@ let deleteCRUD = async (req, res) => {
         await CRUDService.deleteUserId(id);
         return res.send('deleted');
     }
-    else
-        return res.send('id not found')
+    return res.send('id not found')
 }
 module.exports = {
     getHomePage: getHomePage,
