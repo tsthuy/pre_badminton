@@ -1,7 +1,7 @@
 import userService from "../services/userService"
 
 let handleGetAllUsers = async (req, res) => {
-    let id = req.body.id; // all or id
+    let id = req.query.id; // all or id
     if (!id) {
         return res.status(200).json({
             errCode: 1,
@@ -35,9 +35,34 @@ let handleLogin = async (req, res) => {
     })
 }
 
+let handleCreateNewUser = async (req, res) => {
+    let message = await userService.createNewUser(req.body);
+    return res.status(200).json(message);
+}
+let handleDeleteUser = async (req, res) => {
+    if (!req.body.id) {
+        return res.status(200).json({
+            errCode: 1,
+            errMessage: 'Missing parameter required!!'
+        })
+    }
+    let message = await userService.deleteUser(req.body.id);
+    return res.status(200).json(message);
+}
+
+let handleEditUser = async (req, res) => {
+    let data = req.body
+    let message = await userService.updateUserData(data);
+    return res.status(200).json(message)
+}
+
 module.exports =
 {
     handleLogin: handleLogin,
     handleUserLogin: handleLogin,
     handleGetAllUsers: handleGetAllUsers,
+    handleCreateNewUser: handleCreateNewUser,
+    handleDeleteUser: handleDeleteUser,
+    handleEditUser: handleEditUser,
+
 }
